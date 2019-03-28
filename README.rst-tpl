@@ -1,0 +1,101 @@
+{{ project_name }} - A python-django project. 
+===============================================================================
+
+{{ project_name }} 
+
+
+Installation
+-------------
+   
+1. Install the app
+
+    cd [repository of {{ project_name }}]
+
+    pip3 install .
+   
+
+1. Add "{{ project_name }}" to your INSTALLED_APPS setting like this::
+    
+    INSTALLED_APPS = [
+        ...
+        '{{ project_name }}',
+    ]
+
+1. Include the {{ project_name }}-django-app URLconf in your project urls.py like this::
+
+    path('app/', include('{{ project_name }}.urls')),
+
+1. Run `python3 manage.py migrate` to create the {{ project_name }} models.
+
+1. In case you like to test the app, please load the demo data:
+
+1. Start the development server and visit http://127.0.0.1:8000/admin/
+   to create a device (you'll need the Admin app enabled).
+
+Environment variables
+----------------------
+
+for development, please set
+::
+      export DJANGO_SETTINGS_MODULE={{ project_name }}.settings.devel
+
+for production, please set
+::
+       export DJANGO_SETTINGS_MODULE={{ project_name }}.settings.production
+    
+if your media does not reside in the default media folder, please set environment variable to
+::
+        export DJANGO_MEDIA_PATH='path/to/my/media'
+
+to use user defined fixtures, please set:
+::
+        export DJANGO_FIXTURE_PATH='path/to/user/fixtures'
+
+
+Installation of required packages
+---------------------------------
+::
+    pip3 install --user requirements/devel.py
+
+
+Testing all applications
+________________________
+
+use this command to run all tests:
+
+::
+    python3 manage.py test
+   
+tox
+____
+
+   
+testing the application
+_________________________
+
+
+from the directory where the main lara project is located, type
+
+    python3 manage.py test {{ project_name }}
+
+    
+Generating documentation
+________________________
+
+To generate the documentation, please change directory to app and run:
+
+    sphinx-apidoc -o docs .
+    make html
+    
+
+Acknowledgements
+________________
+
+The LARA-django developers thank 
+
+    * the python team
+    * the whole django team (https://www.djangoproject.com/) for their great tool !
+       
+.. _Django: https://www.djangoproject.com/
+.. _LARA: https://github.com/LARAsuite/
+.. _pip: https://pypi.python.org/pypi/pip

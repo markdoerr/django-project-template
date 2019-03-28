@@ -1,0 +1,66 @@
+"""_____________________________________________________________________
+
+:PROJECT: 
+
+*{{ project_name }} setup *
+
+:details: {{ project_name }} setup file for installation.
+         - For installation, run:
+           run pip3 install .
+           or  python3 setup.py install
+
+:file:    setup.py
+:authors: {{ authors }}
+
+:date: (creation)          {{ creation_date }}
+:date: (last modification) {{ creation_date }}
+
+.. note:: -
+.. todo:: - 
+________________________________________________________________________
+"""
+__version__ = "0.0.2"
+
+import os
+import sys
+
+from setuptools import setup, find_packages
+#~ from distutils.sysconfig import get_python_lib
+
+pkg_name = '{{ project_name }}'
+
+def read(fname):
+    try:
+        return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    except IOError:
+        return ''
+
+install_requires = [] 
+data_files = []
+    
+setup(name=pkg_name,
+    version=__version__,
+    description='{{ project_name }}',
+    long_description=read('README.rst'),
+    author='{{ authors }}',
+    author_email='{{ authors }}',
+    keywords='python3, django',
+    url='https://github.com/markdoerr/{{ project_name }}',
+    license='GPL',
+    packages=find_packages(), #['{{ project_name }}'],
+    #~ package_dir={'{{ project_name }}':'{{ project_name }}'},
+    install_requires = install_requires,
+    test_suite='',
+    classifiers=['Development Status :: 1 - Development',
+                   'Environment :: commandline',
+                   'Framework :: django',
+                   'Intended Audience :: Developers',
+                   'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+                   'Operating System :: OS Independent',
+                   'Programming Language :: Python',
+                   'Programming Language :: Python :: 3.6',
+                   'Programming Language :: Python :: 3.7',
+                   'Topic :: Utilities'],
+    include_package_data=True,
+    data_files=data_files,
+)
